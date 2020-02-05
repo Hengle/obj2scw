@@ -19,12 +19,12 @@ if not os.path.exists('scw/'):
 
 
 def printDebug(inputSTR):
-	if len(sys.argv) > 2:
+	if debug:
 		print("DEBUG: " + inputSTR)
 
 
 def printDebugQuestion(inputSTRQuest):
-	if len(sys.argv) > 2:
+	if debug:
 		print("DEBUG: " + inputSTRQuest)
 		ynQuackstion = input()  # ynQuestion... more like ynQuackstion
 		
@@ -91,9 +91,7 @@ def crap(path):
 	printDebug("Vertex Texture Length: " + str(len(vt)))
 	printDebug("Vertex Normal Length: " + str(len(vn)))
 	printDebug("Triangle Length: " + str(len(f)))
-	boolYESNO = printDebugQuestion("Display file content? Y/N")
-	printDebug(str(boolYESNO))
-	if boolYESNO:
+	if debug:
 		itWouldntHurt = open(pathtoobj).read()
 		arrayText = ""
 		for line in itWouldntHurt.split('\n'):
@@ -157,6 +155,8 @@ def crap(path):
 
 
 files = os.listdir('obj/')
+debug = True if len(sys.argv) == 2 and sys.argv[1] == 'True' else False
+print(debug)
 if len(files) == 0:
 	print('Please put .obj file in "obj/"')
 else:

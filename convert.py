@@ -91,12 +91,7 @@ def crap(path):
 	printDebug("Vertex Texture Length: " + str(len(vt)))
 	printDebug("Vertex Normal Length: " + str(len(vn)))
 	printDebug("Triangle Length: " + str(len(f)))
-	if debug:
-		itWouldntHurt = open(pathtoobj).read()
-		arrayText = ""
-		for line in itWouldntHurt.split('\n'):
-			arrayText += line + " "
-		printDebug(arrayText)
+	printDebug(' '.join(open(pathtoobj).read().split('\n')))
 	
 	vt[1::2] = [x * -1 + 1 for x in vt[1::2]]
 	# print(v)
